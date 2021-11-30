@@ -4,14 +4,19 @@
 			cloudName="demo"
 			publicId="woman"
 			responsive="fill"
+			crop="fill"
+			loading="lazy"
 		>
-			<CldTransformation
+			<CldTransformation radius="20" />
+			<CldTransformation effect="sepia" />
+			<CldTransformation overlay="text:arial_60:This is my picture" gravity="north" y="20" />
+			<CldTransformation angle="20" />
+			<!--			<CldTransformation
 				crop="fill"
 				width="auto"
 				gravity="auto"
-			/>
+			/>-->
 		</CldImage>
-
 	</div>
 </template>
 

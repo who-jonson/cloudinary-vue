@@ -1,4 +1,4 @@
-import { progressive, PLACEHOLDER_TRANSFORMATIONS, predominantColorTransformPxl } from '../constants';
+import { progressive, PLACEHOLDER_TRANSFORMATIONS, predominantColorTransformPxl } from '@/constants';
 
 /**
  *

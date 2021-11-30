@@ -108,8 +108,7 @@ export default {
 			this.setup(this.$attrs);
 
 			if (this.placeholder) {
-				// eslint-disable-next-line
-        console.warn ('The prop "placeholder" has been deprecated, please use the cld-placeholder component');
+				console.warn ('The prop "placeholder" has been deprecated, please use the cld-placeholder component');
 			}
 
 			const responsiveModeNoSize = this.responsive && !this.size;
