@@ -15,10 +15,11 @@ This Readme provides basic installation and usage information. For the complete 
 ## Vue 3.x
 
 Install using your favorite package manager (yarn, npm)
-    ```bash
-    npm install who-jonson/cloudinary-vue#next
-    yarn add cloudinary-vue
-    ```
+```
+npm i who-jonson/cloudinary-vue#next
+#OR
+yarn add who-jonson/cloudinary-vue#next
+```
 
 ### Nuxt.js
 
