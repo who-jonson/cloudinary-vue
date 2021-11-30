@@ -1,37 +1,37 @@
 
 <script>
-import { COMPONENTS } from '../../constants'
+import { COMPONENTS } from '../../constants';
 
 /**
  * Cloudinary context providing element
  */
 export default {
-  name: COMPONENTS.CldContext,
+	name: COMPONENTS.CldContext,
 
-  inheritAttrs: false,
+	inheritAttrs: false,
 
-  provide() {
-    return {
-      contextConfiguration: this.configuration,
-      contextOptions: this.$attrs,
-    };
-  },
+	provide() {
+		return {
+			contextConfiguration: this.configuration,
+			contextOptions: this.$attrs
+		};
+	},
 
-  computed: {
-    attributes() {
-      return normalizeNonCloudinary(this.$attrs)
-    }
-  },
+	computed: {
+		attributes() {
+			return normalizeNonCloudinary(this.$attrs);
+		}
+	},
 
-  render(h) {
-    return h(
-      "div",
-      {
-        class: { "cld-context": true },
-        attrs: this.$attrs
-      },
-      this.$slots.default
-    );
-  }
+	render(h) {
+		return h(
+			'div',
+			{
+				class: { 'cld-context': true },
+				attrs: this.$attrs
+			},
+			this.$slots.default
+		);
+	}
 };
 </script>

@@ -1,3 +1,3 @@
-export { debounce } from "./debounce";
+export { debounce } from './debounce';
 
-export { range } from "./range";
+export { range } from './range';

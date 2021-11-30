@@ -5,11 +5,10 @@
  * @param {Number} step
  */
 export const range = (min, max, step) => {
-    const result = [];
-    for (let i = min; i <= max; i += step) {
-      result.push(i);
-    }
-  
-    return result;
-  }
-  
+	const result = [];
+	for (let i = min; i <= max; i += step) {
+		result.push(i);
+	}
+
+	return result;
+};

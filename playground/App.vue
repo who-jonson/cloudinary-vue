@@ -1,26 +1,25 @@
 <template>
-  <div id="app">
-    <cld-image
-        cloudName="demo"
-        public-id="woman"
-        responsive="fill"
-    >
-      <cld-transformation
-          crop="fill"
-          width="auto"
-          gravity="auto"
-      />
-    </cld-image>
+	<div id="app">
+		<CldImage
+			cloudName="demo"
+			publicId="woman"
+			responsive="fill"
+		>
+			<CldTransformation
+				crop="fill"
+				width="auto"
+				gravity="auto"
+			/>
+		</CldImage>
 
-  </div>
+	</div>
 </template>
 
 <script>
+
 export default {
-  name: 'App',
-  components: {
-  }
-}
+	name: 'App'
+};
 </script>
 
 <style>

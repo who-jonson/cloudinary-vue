@@ -1,42 +1,42 @@
-export function install(Vue, options = {}) {
-  if (Vue.CldInstalled) {
-    throw new Error("Cloudinary plugin already installed");
-  }
+export function install(app, options = {}) {
+	if (app.CldInstalled) {
+		throw new Error('Cloudinary plugin already installed');
+	}
 
-  Vue.CldInstalled = true;
+	app.CldInstalled = true;
 
-  initComponents(Vue, options);
+	initComponents(app, options);
 }
 
-function registerComponents(Vue, components = {}, defaultConfigurations = {}) {
-  /* eslint-disable-next-line */
+function registerComponents(app, components = {}, defaultConfigurations = {}) {
+	/* eslint-disable-next-line */
   if (!defaultConfigurations) { console.warn('🛑 There is no default configuration for Cloudinary found!') }
 
-  for (let key in components) {
-    const component = components[key];
+	for (let key in components) {
+		const component = components[key];
 
-    if (component) {
-      const data = component.data ? component.data() : {}
+		if (component) {
+			const data = component.data ? component.data() : {};
 
-      Vue.component(key, {
-        ...component,
-        data() {
-          return {
-            ...data,
-            defaultConfigurations
-          }
-        }
-      });
-    }
-  }
+			app.component(key, {
+				...component,
+				data() {
+					return {
+						...data,
+						defaultConfigurations
+					};
+				}
+			});
+		}
+	}
 }
 
-function initComponents(Vue, options) {
-  const configuration = options.configuration;
-  const components = Array.isArray(options.components) ? options.components.reduce((obj, component) => ({
-    ...obj,
-    [component.name]: component
-  }), {}) : options.components;
+function initComponents(app, options) {
+	const configuration = options.configuration;
+	const components = Array.isArray(options.components) ? options.components.reduce((obj, component) => ({
+		...obj,
+		[component.name]: component
+	}), {}) : options.components;
 
-  registerComponents(Vue, components, configuration);
+	registerComponents(app, components, configuration);
 }
