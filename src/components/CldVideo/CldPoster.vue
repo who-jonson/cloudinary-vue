@@ -1,8 +1,8 @@
 <script>
-import { h }          from 'vue';
-import { setup }      from '@/mixins/setup';
-import { register }   from '@/mixins/registerTransformation';
-import { compute }    from '@/mixins/compute';
+import { h } from 'vue';
+import { setup } from '@/mixins/setup';
+import { register } from '@/mixins/registerTransformation';
+import { compute } from '@/mixins/compute';
 import { COMPONENTS } from '@/constants';
 
 /**
@@ -13,7 +13,7 @@ import { COMPONENTS } from '@/constants';
  */
 export default {
 	name: COMPONENTS.CldPoster,
-	mixins: [ register, setup, compute ],
+	mixins: [register, setup, compute],
 	inject: {
 		registerPoster: {
 			default: null

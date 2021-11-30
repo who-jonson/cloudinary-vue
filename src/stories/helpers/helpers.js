@@ -256,10 +256,10 @@ export const RGBAToHexA = (rgba, prefix = 'rgb:') => {
 	// Strip the slash if using space-separated syntax
 	if (rgba.includes('/')) rgba.splice(3, 1);
 
-	for (let color in rgba) {
-		let r = rgba[color];
+	for (const color in rgba) {
+		const r = rgba[color];
 		if (r.includes('%')) {
-			let p = r.substr(0, r.length - 1) / 100;
+			const p = r.substr(0, r.length - 1) / 100;
 
 			if (color < 3) {
 				rgba[color] = Math.round(p * 255);
@@ -276,16 +276,16 @@ export const RGBAToHexA = (rgba, prefix = 'rgb:') => {
 		a: toHEXValue(Math.round(+rgba[3] * 255))
 	};
 
-	if (colors.r.length == 1) {
+	if (colors.r.length === 1) {
 		colors.r = `0${colors.r}`;
 	}
-	if (colors.g.length == 1) {
+	if (colors.g.length === 1) {
 		colors.g = `0${colors.g}`;
 	}
-	if (colors.b.length == 1) {
+	if (colors.b.length === 1) {
 		colors.b = `0${colors.b}`;
 	}
-	if (colors.a.length == 1) {
+	if (colors.a.length === 1) {
 		colors.a = `0${colors.a}`;
 	}
 

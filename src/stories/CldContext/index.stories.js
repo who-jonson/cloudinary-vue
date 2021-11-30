@@ -21,7 +21,7 @@ export default {
 const Template = (args, { argTypes }) => ({
 	props: Object.keys(argTypes),
 	components: { CldContext, CldImage },
-	mixins: [ TransformMixins ],
+	mixins: [TransformMixins],
 	template: `
     <cld-context v-bind="props" :border="border">
       <cld-image
@@ -34,7 +34,7 @@ export const SingleImage = Template.bind({});
 export const MultipleImages = (args, { argTypes }) => ({
 	props: Object.keys(argTypes),
 	components: { CldContext, CldImage },
-	mixins: [ TransformMixins ],
+	mixins: [TransformMixins],
 	template: `
     <cld-context cloud-name="demo" v-bind="props" :border="border">
       <cld-image

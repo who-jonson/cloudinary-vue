@@ -1,13 +1,13 @@
 <script>
-import { h }                                   from 'vue';
-import { setup }                               from '@/mixins/setup';
-import { compute }                             from '@/mixins/compute';
-import { register }                            from '@/mixins/registerTransformation';
-import { computePlaceholder }                  from '@/helpers/computeOptions';
+import { h } from 'vue';
+import { setup } from '@/mixins/setup';
+import { compute } from '@/mixins/compute';
+import { register } from '@/mixins/registerTransformation';
+import { computePlaceholder } from '@/helpers/computeOptions';
 import { getCldPlaceholder, isCldPlaceholder } from '@/helpers/findComponent';
-import { size }                                from '@/mixins/size';
-import { lazy }                                from '@/mixins/lazy';
-import {getDevicePixelRatio}                   from '@/utils/getDevicePixelRatio';
+import { size } from '@/mixins/size';
+import { lazy } from '@/mixins/lazy';
+import { getDevicePixelRatio } from '@/utils/getDevicePixelRatio';
 import {
 	ACCESSIBILITY_TRANSFORMATIONS,
 	PLACEHOLDER_TRANSFORMATIONS,
@@ -108,7 +108,7 @@ export default {
 			this.setup(this.$attrs);
 
 			if (this.placeholder) {
-				console.warn ('The prop "placeholder" has been deprecated, please use the cld-placeholder component');
+				console.warn('The prop "placeholder" has been deprecated, please use the cld-placeholder component');
 			}
 
 			const responsiveModeNoSize = this.responsive && !this.size;

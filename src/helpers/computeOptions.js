@@ -16,7 +16,7 @@ const addProgressive = (enable = false) => {
  * @returns {Object} new options Object with extra inside transformation
  */
 export const extendOptions = (baseOptions = {}, extra) => {
-	let transformation = baseOptions.transformation ? [...baseOptions.transformation] : [];
+	const transformation = baseOptions.transformation ? [...baseOptions.transformation] : [];
 
 	if (Array.isArray(extra)) {
 		extra.forEach(effect => transformation.push(effect));

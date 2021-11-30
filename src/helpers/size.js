@@ -39,7 +39,7 @@ export const watchElementSize = (element, cb) => {
 		handleWindowResize();
 
 		return () => {
-			if (cancelled)  return;
+			if (cancelled) return;
 
 			cancelled = true;
 			window.removeEventListener('resize', handleWindowResize);

@@ -32,7 +32,7 @@ WithCldImage.args = {
 export const WithCldVideo = (args, { argTypes }) => ({
 	props: Object.keys(argTypes),
 	components: { CldTransformation, CldVideo },
-	mixins: [ TransformMixins ],
+	mixins: [TransformMixins],
 	template: `
     <cld-video
       cloud-name="demo"
@@ -46,5 +46,4 @@ WithCldVideo.args = {
 	width: 500,
 	crop: 'scale'
 };
-
 

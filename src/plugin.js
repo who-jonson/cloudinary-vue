@@ -9,10 +9,9 @@ export function install(app, options = {}) {
 }
 
 function registerComponents(app, components = {}, defaultConfigurations = {}) {
-	/* eslint-disable-next-line */
-  if (!defaultConfigurations) { console.warn('🛑 There is no default configuration for Cloudinary found!') }
+	if (!defaultConfigurations) { console.warn('🛑 There is no default configuration for Cloudinary found!'); }
 
-	for (let key in components) {
+	for (const key in components) {
 		const component = components[key];
 
 		if (component) {

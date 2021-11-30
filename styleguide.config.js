@@ -1,44 +1,44 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
-  sections: [
-    {
-      name: "Cloudinary Vue SDK",
-      content: "docs-sources/links.md",
-      tocHide: true
-    },
-    { name: "About Cloudinary", content: "docs-sources/desc.md" },
-    {
-      name: "Install core components",
-      content: "docs-sources/installation.md",
-      components: ["src/components/**/*.vue"],
-      sectionDepth: 1
-    }
-  ],
-  showSidebar: false,
-  exampleMode: "expand",
-  usageMode: "expand",
-  pagePerSection: true,
-  getComponentPathLine(componentPath) {
-    const rel = path.relative(__dirname, componentPath);
-    const name = path.basename(componentPath, ".vue");
-    const subfolder = rel
-      .replace(`src/components/${name}.vue`, "")
-      .replace(/^([^/]+)\/?$/, "$1");
-    return `
+	sections: [
+		{
+			name: 'Cloudinary Vue SDK',
+			content: 'docs-sources/links.md',
+			tocHide: true
+		},
+		{ name: 'About Cloudinary', content: 'docs-sources/desc.md' },
+		{
+			name: 'Install core components',
+			content: 'docs-sources/installation.md',
+			components: ['src/components/**/*.vue'],
+			sectionDepth: 1
+		}
+	],
+	showSidebar: false,
+	exampleMode: 'expand',
+	usageMode: 'expand',
+	pagePerSection: true,
+	getComponentPathLine(componentPath) {
+		const rel = path.relative(__dirname, componentPath);
+		const name = path.basename(componentPath, '.vue');
+		const subfolder = rel
+			.replace(`src/components/${name}.vue`, '')
+			.replace(/^([^/]+)\/?$/, '$1');
+		return `
       import { ${name} } from 'cloudinary-vue${
-      subfolder ? `/${subfolder}` : ""
+      subfolder ? `/${subfolder}` : ''
     }';
     `;
-  },
-  editorConfig: {
-    theme: "lesser-dark"
-  },
-  title: "Cloudinary Vue SDK",
-  template: {
-    favicon: "./favicon.png",
-    body: {
-      raw: `
+	},
+	editorConfig: {
+		theme: 'lesser-dark'
+	},
+	title: 'Cloudinary Vue SDK',
+	template: {
+		favicon: './favicon.png',
+		body: {
+			raw: `
       <style>
         @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Montserrat:400,500,600');
 
@@ -219,34 +219,35 @@ module.exports = {
         }
       </style>
     `
-    }
-  },
-  styleguideDir: "docs",
-  styleguideComponents: {
-    "slots/IsolateButton": path.join(__dirname, "docs-sources/IsolateButton"),
-    "rsg-components/slots/UsageTabButton": path.join(
-      __dirname,
-      "docs-sources/UsageTabButton"
-    ),
-    "rsg-components/lib/slots/UsageTabButton": path.join(
-      __dirname,
-      "docs-sources/UsageTabButton"
-    ),
-    StyleGuideRenderer: path.join(__dirname, "docs-sources/StyleGuideRenderer"),
-    SectionHeadingRenderer: path.join(
-      __dirname,
-      "docs-sources/SectionHeadingRenderer"
-    )
-  },
-  dangerouslyUpdateWebpackConfig(webpackConfig) {
-    webpackConfig.output.filename = "build/[name].bundle.js";
-    webpackConfig.output.chunkFilename = "build/[name].js";
-    webpackConfig.plugins.forEach(plugin => {
-      if (plugin.__proto__.constructor.name === "MiniCssExtractPlugin") {
-        plugin.options.filename = "css/[name].css";
-        plugin.options.chunkFilename = "css/[name].css";
-      }
-    });
-    return webpackConfig;
-  }
+		}
+	},
+	styleguideDir: 'docs',
+	styleguideComponents: {
+		'slots/IsolateButton': path.join(__dirname, 'docs-sources/IsolateButton'),
+		'rsg-components/slots/UsageTabButton': path.join(
+			__dirname,
+			'docs-sources/UsageTabButton'
+		),
+		'rsg-components/lib/slots/UsageTabButton': path.join(
+			__dirname,
+			'docs-sources/UsageTabButton'
+		),
+		StyleGuideRenderer: path.join(__dirname, 'docs-sources/StyleGuideRenderer'),
+		SectionHeadingRenderer: path.join(
+			__dirname,
+			'docs-sources/SectionHeadingRenderer'
+		)
+	},
+	dangerouslyUpdateWebpackConfig(webpackConfig) {
+		webpackConfig.output.filename = 'build/[name].bundle.js';
+		webpackConfig.output.chunkFilename = 'build/[name].js';
+		webpackConfig.plugins.forEach(plugin => {
+			// eslint-disable-next-line no-proto
+			if (plugin.__proto__.constructor.name === 'MiniCssExtractPlugin') {
+				plugin.options.filename = 'css/[name].css';
+				plugin.options.chunkFilename = 'css/[name].css';
+			}
+		});
+		return webpackConfig;
+	}
 };

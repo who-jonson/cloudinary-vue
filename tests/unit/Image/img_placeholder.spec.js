@@ -1,11 +1,11 @@
-import Vue from "vue";
-import { mount } from "@vue/test-utils";
-import CldImage from "../../../src/components/CldImage/CldImage";
+import Vue from 'vue';
+import { mount } from '@vue/test-utils';
+import CldImage from '../../../src/components/CldImage/CldImage';
 
 describe('CldImage::placeholder', () => {
-  it("pixelate", async () => {
-    const wrapper = mount({
-      template: `
+	it('pixelate', async() => {
+		const wrapper = mount({
+			template: `
         <cld-image
           cloudName="demo"
           publicId="face_top"
@@ -13,26 +13,26 @@ describe('CldImage::placeholder', () => {
           placeholder="pixelate"
         />
       `,
-      components: { CldImage }
-    })
+			components: { CldImage }
+		});
 
-    const placeholder = wrapper.find('.cld-placeholder')
+		const placeholder = wrapper.find('.cld-placeholder');
 
-    expect(placeholder.attributes("src")).toEqual(
+		expect(placeholder.attributes('src')).toEqual(
      `http://res.cloudinary.com/demo/image/upload/e_pixelate,f_auto,q_1/face_top`
-   );
+		);
 
-    await Vue.nextTick();
-   const image = wrapper.find('.cld-image')
+		await Vue.nextTick();
+		const image = wrapper.find('.cld-image');
 
-   expect(image.attributes("src")).toEqual(
+		expect(image.attributes('src')).toEqual(
      `http://res.cloudinary.com/demo/image/upload/face_top`
-   );
-  });
+		);
+	});
 
-  it("LQ", async () => {
-    const wrapper = mount({
-      template: `
+	it('LQ', async() => {
+		const wrapper = mount({
+			template: `
         <cld-image
           cloudName="demo"
           publicId="face_top"
@@ -40,24 +40,24 @@ describe('CldImage::placeholder', () => {
           placeholder="lqip"
         />
       `,
-      components: { CldImage }
-    });
+			components: { CldImage }
+		});
 
-    const placeholder = wrapper.find('.cld-placeholder')
+		const placeholder = wrapper.find('.cld-placeholder');
 
-    expect(placeholder.attributes("src")).toEqual(
+		expect(placeholder.attributes('src')).toEqual(
       `http://res.cloudinary.com/demo/image/upload/$nh_ih,$nw_iw,c_scale,q_auto,w_20/c_scale,h_$nh,w_$nw/face_top`
-    );
-    await Vue.nextTick();
-    const image = wrapper.find('.cld-image')
-    expect(image.attributes("src")).toEqual(
+		);
+		await Vue.nextTick();
+		const image = wrapper.find('.cld-image');
+		expect(image.attributes('src')).toEqual(
         `http://res.cloudinary.com/demo/image/upload/face_top`
-    );
-  });
+		);
+	});
 
-  it("color", async () => {
-    const wrapper = mount({
-      template: `
+	it('color', async() => {
+		const wrapper = mount({
+			template: `
         <cld-image
           cloudName="demo"
           publicId="face_top"
@@ -65,18 +65,18 @@ describe('CldImage::placeholder', () => {
           placeholder="color"
         />
       `,
-      components: { CldImage }
-    })
+			components: { CldImage }
+		});
 
-    const placeholder = wrapper.find('.cld-placeholder')
-    expect(placeholder.attributes("src")).toEqual(
+		const placeholder = wrapper.find('.cld-placeholder');
+		expect(placeholder.attributes('src')).toEqual(
       `http://res.cloudinary.com/demo/image/upload/$nh_ih,$nw_iw,c_scale,q_1,w_1/c_scale,h_$nh,w_$nw/face_top`
-    );
+		);
 
-    await Vue.nextTick();
-    const image = wrapper.find('.cld-image')
-    expect(image.attributes("src")).toEqual(
+		await Vue.nextTick();
+		const image = wrapper.find('.cld-image');
+		expect(image.attributes('src')).toEqual(
       `http://res.cloudinary.com/demo/image/upload/face_top`
-    );
-  });
-})  
+		);
+	});
+});

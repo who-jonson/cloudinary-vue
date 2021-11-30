@@ -1,15 +1,15 @@
-import Vue from "vue";
-import {mount} from "@vue/test-utils";
-import CldTransformation from "../../../src/components/CldTransformation/CldTransformation.vue";
-import CldImage from "../../../src/components/CldImage/CldImage.vue";
-import { IMAGE_CLASSES } from '../../../src/constants'
-import CldPlaceholder from "../../../src/components/CldPlaceholder/CldPlaceholder";
+import Vue from 'vue';
+import { mount } from '@vue/test-utils';
+import CldTransformation from '../../../src/components/CldTransformation/CldTransformation.vue';
+import CldImage from '../../../src/components/CldImage/CldImage.vue';
+import { IMAGE_CLASSES } from '../../../src/constants';
+import CldPlaceholder from '../../../src/components/CldPlaceholder/CldPlaceholder';
 
-describe("CldPlaceholder", () => {
-  it("Should remove placeholder once CldImage is loaded", async () => {
-    let wrapper = mount(
-      {
-        template: `
+describe('CldPlaceholder', () => {
+	it('Should remove placeholder once CldImage is loaded', async() => {
+		const wrapper = mount(
+			{
+				template: `
           <cld-image cloudName="demo" publicId="face_top" width="500" height="200">
             <cld-transformation crop="scale" width="100" height="100" />
             <cld-transformation effect="sepia" />
@@ -17,32 +17,32 @@ describe("CldPlaceholder", () => {
             <cld-placeholder type="pixelate"></cld-placeholder>
           </cld-image>
         `
-      },
-      {
-        components: {CldTransformation, CldImage, CldPlaceholder}
-      }
-    );
+			},
+			{
+				components: { CldTransformation, CldImage, CldPlaceholder }
+			}
+		);
 
-    expect(wrapper.exists()).toBe(true)
-    await Vue.nextTick()
+		expect(wrapper.exists()).toBe(true);
+		await Vue.nextTick();
 
-    let cldImageEl = wrapper.find(`.${IMAGE_CLASSES.DEFAULT}`);
-    let cldPlaceholderEl = wrapper.find('.cld-placeholder');
+		const cldImageEl = wrapper.find(`.${IMAGE_CLASSES.DEFAULT}`);
+		const cldPlaceholderEl = wrapper.find('.cld-placeholder');
 
-    expect(cldImageEl.exists()).toBe(true)
-    expect(cldImageEl.classes()).toContain(IMAGE_CLASSES.LOADING)
-    expect(cldImageEl.attributes('style')).toBe('opacity: 0; position: absolute;');
+		expect(cldImageEl.exists()).toBe(true);
+		expect(cldImageEl.classes()).toContain(IMAGE_CLASSES.LOADING);
+		expect(cldImageEl.attributes('style')).toBe('opacity: 0; position: absolute;');
 
-    expect(cldPlaceholderEl.exists()).toBe(true)
-    expect(cldPlaceholderEl.attributes('src')).toBe('http://res.cloudinary.com/demo/image/upload/c_scale,h_100,w_100/e_sepia/e_blur/e_pixelate,f_auto,q_1/face_top')
-    
-    cldImageEl.trigger('load');
-    await Vue.nextTick()
+		expect(cldPlaceholderEl.exists()).toBe(true);
+		expect(cldPlaceholderEl.attributes('src')).toBe('http://res.cloudinary.com/demo/image/upload/c_scale,h_100,w_100/e_sepia/e_blur/e_pixelate,f_auto,q_1/face_top');
 
-    expect(wrapper.find('.cld-placeholder').exists()).toBe(false)
-    expect(cldImageEl.classes()).toContain(IMAGE_CLASSES.LOADED)
-    expect(cldImageEl.attributes('style')).toBe("");
+		cldImageEl.trigger('load');
+		await Vue.nextTick();
 
-    expect(cldImageEl.attributes('src')).toBe('http://res.cloudinary.com/demo/image/upload/c_scale,h_100,w_100/e_sepia/e_blur/face_top')
-  });
+		expect(wrapper.find('.cld-placeholder').exists()).toBe(false);
+		expect(cldImageEl.classes()).toContain(IMAGE_CLASSES.LOADED);
+		expect(cldImageEl.attributes('style')).toBe('');
+
+		expect(cldImageEl.attributes('src')).toBe('http://res.cloudinary.com/demo/image/upload/c_scale,h_100,w_100/e_sepia/e_blur/face_top');
+	});
 });

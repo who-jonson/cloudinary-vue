@@ -17,7 +17,7 @@ export default {
 const Template = (args, { argTypes }) => ({
 	props: Object.keys(argTypes),
 	components: { CldPoster, CldVideo },
-	mixins: [ TransformMixins ],
+	mixins: [TransformMixins],
 	template: `
     <cld-video
       cloud-name="demo"

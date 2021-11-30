@@ -16,7 +16,7 @@ export default {
 		sourceTypes: {
 			control: 'object',
 			defaultValue: Cloudinary.DEFAULT_VIDEO_SOURCE_TYPES.reduce(
-				(types, type) => ({ ...types, [type]: {} }),
+				(types, type) => ({ ...types, [type]: {}}),
 				{}
 			)
 		},

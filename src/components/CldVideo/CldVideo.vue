@@ -1,14 +1,14 @@
 <script>
-import { Cloudinary }    from 'cloudinary-core';
-import { setup }         from '@/mixins/setup';
-import { compute }       from '@/mixins/compute';
-import { register }      from '@/mixins/registerTransformation';
+import { Cloudinary } from 'cloudinary-core';
+import { setup } from '@/mixins/setup';
+import { compute } from '@/mixins/compute';
+import { register } from '@/mixins/registerTransformation';
 import { extendOptions } from '@/helpers/computeOptions';
-import { getCldPoster }  from '@/helpers/findComponent';
-import { lazy }          from '@/mixins/lazy';
-import { COMPONENTS }    from '@/constants';
+import { getCldPoster } from '@/helpers/findComponent';
+import { lazy } from '@/mixins/lazy';
+import { COMPONENTS } from '@/constants';
 
-const defaultSourceTypes = Cloudinary.DEFAULT_VIDEO_SOURCE_TYPES.reduce((types, type) => ({ ...types, [type]: {} }), {});
+const defaultSourceTypes = Cloudinary.DEFAULT_VIDEO_SOURCE_TYPES.reduce((types, type) => ({ ...types, [type]: {}}), {});
 /**
  * Deliver videos and specify video transformations using the `cld-video` (CldVideo) element,
  * which automatically generates an HTML5 video tag including the URL sources for the main formats
@@ -56,7 +56,7 @@ export default {
 		sourceTypes: {
 			type: Object,
 			default: () => defaultSourceTypes,
-			validator: value => typeof value !== 'Object'
+			validator: value => typeof value !== 'object'
 		},
 		poster: {
 			type: [String, Object, Array]
@@ -76,7 +76,7 @@ export default {
 			const options = this.computeURLOptions();
 			const sources = [];
 
-			for (let type in this.sourceTypes) {
+			for (const type in this.sourceTypes) {
 				const typeOptions = this.sourceTypes[type];
 				const formatType = type === 'ogv' ? 'ogg' : type;
 				const srcOptions = extendOptions(options, typeOptions);
@@ -140,7 +140,7 @@ export default {
 		const poster = cldPoster ? this.posterUrl : this.getPosterUrl();
 
 		return (
-			<video autoplay={this.$attrs.autoplay} muted={this.$attrs.muted} attrs={this.$attrs} poster={poster} ref="videoElement">
+			<video autoplay={this.$attrs.autoplay} muted={this.$attrs.muted} attrs={this.$attrs} poster={poster} ref='videoElement'>
 				{ sources.map((source, index) => <source key={index} attrs={source} />)}
 				{ this.$slots.default }
 			</video>

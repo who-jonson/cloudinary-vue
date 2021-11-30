@@ -55,7 +55,6 @@ export const size = {
 					this.size = newSize;
 				}
 			});
-
 		}
 	},
 

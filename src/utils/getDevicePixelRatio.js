@@ -4,7 +4,7 @@ export function getDevicePixelRatio(roundDpr) {
 	if (roundDpr) {
 		dpr = Math.ceil(dpr);
 	}
-	if (dpr <= 0 || dpr === (0/0)) {
+	if (dpr <= 0 || dpr === (0 / 0)) {
 		dpr = 1;
 	}
 	let dprString = dpr.toString();

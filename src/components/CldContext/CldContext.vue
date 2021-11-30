@@ -1,5 +1,5 @@
 <script>
-import { h }          from 'vue';
+import { h } from 'vue';
 import { COMPONENTS } from '@/constants';
 
 /**
