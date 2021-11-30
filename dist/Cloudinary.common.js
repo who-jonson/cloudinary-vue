@@ -16908,7 +16908,7 @@ var CLD_IMAGE_WRAPPER_CLASS = 'cld-image-wrapper';
         'cld-context': true
       },
       attrs: this.$attrs
-    }, this.$slots.default);
+    }, this.$slots.default ? this.$slots.default() : []);
   }
 });
 ;// CONCATENATED MODULE: ./src/components/CldContext/CldContext.vue?vue&type=script&lang=js
@@ -17814,7 +17814,7 @@ function getDevicePixelRatio(roundDpr) {
   },
   render: function render() {
     if (!this.publicId) return null;
-    var children = this.$slots.default() || [];
+    var children = this.$slots.default ? this.$slots.default() : [];
     var hasExtraTransformations = children.length > 1 || children.length === 1 && !isCldPlaceholder(children[0]);
     /* Render the children first to get the extra transformations (if there is any) */
 
@@ -17994,7 +17994,7 @@ var defaultSourceTypes = cloudinary_core.Cloudinary.DEFAULT_VIDEO_SOURCE_TYPES.r
   },
   render: function render() {
     if (!this.publicId) return null;
-    var children = this.$slots.default || [];
+    var children = this.$slots.default ? this.$slots.default() : [];
     var cldPoster = getCldPoster(children);
     var sources = this.getSources();
     var poster = cldPoster ? this.posterUrl : this.getPosterUrl();
@@ -18009,7 +18009,7 @@ var defaultSourceTypes = cloudinary_core.Cloudinary.DEFAULT_VIDEO_SOURCE_TYPES.r
         "key": index,
         "attrs": source
       }, null);
-    }), this.$slots.default]);
+    }), children]);
   }
 });
 ;// CONCATENATED MODULE: ./src/components/CldVideo/CldVideo.vue?vue&type=script&lang=js
@@ -18062,12 +18062,12 @@ const CldVideo_exports_ = CldVideovue_type_script_lang_js;
     var baseOptions = this.getOptions();
     var publicId = this.publicId || baseOptions.publicId;
     if (!publicId || !this.registerPoster) return null;
-    var children = this.$slots.default || [];
+    var children = this.$slots.default ? this.$slots.default() : [];
     var hasExtraTransformations = children.length > 0;
     /* Render the children first to get the extra transformations (if there is any) */
 
     if (hasExtraTransformations && !this.extraTransformations.length) {
-      return (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.h)('div', {}, this.$slots.default);
+      return (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.h)('div', {}, children);
     }
 
     this.setup(_objectSpread2(_objectSpread2(_objectSpread2({}, this.getConfig()), baseOptions), this.$attrs));

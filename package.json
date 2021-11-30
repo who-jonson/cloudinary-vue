@@ -13,7 +13,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o docs-build -s ./src/stories/assets"
   },
-  "main": "dist/Cloudinary.umd.js",
+  "main": "dist/Cloudinary.common.js",
   "unpkg": "dist/Cloudinary.umd.min.js",
   "dependencies": {
     "cloudinary-core": "^2.12.0"
