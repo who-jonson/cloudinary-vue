@@ -152,7 +152,7 @@ export default {
 	render() {
 		if (!this.publicId) return null;
 
-		const children = this.$slots.default() || [];
+		const children = this.$slots.default ? this.$slots.default() : [];
 		const hasExtraTransformations = children.length > 1 || (children.length === 1 && !isCldPlaceholder(children[0]));
 
 		/* Render the children first to get the extra transformations (if there is any) */

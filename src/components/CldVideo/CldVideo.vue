@@ -134,7 +134,7 @@ export default {
 	render() {
 		if (!this.publicId) return null;
 
-		const children = this.$slots.default || [];
+		const children = this.$slots.default ? this.$slots.default() : [];
 		const cldPoster = getCldPoster(children);
 		const sources = this.getSources();
 		const poster = cldPoster ? this.posterUrl : this.getPosterUrl();
@@ -142,7 +142,7 @@ export default {
 		return (
 			<video autoplay={this.$attrs.autoplay} muted={this.$attrs.muted} attrs={this.$attrs} poster={poster} ref='videoElement'>
 				{ sources.map((source, index) => <source key={index} attrs={source} />)}
-				{ this.$slots.default }
+				{ children }
 			</video>
 		);
 	}

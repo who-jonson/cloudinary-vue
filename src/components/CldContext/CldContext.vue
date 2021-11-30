@@ -30,7 +30,7 @@ export default {
 				class: { 'cld-context': true },
 				attrs: this.$attrs
 			},
-			this.$slots.default
+			this.$slots.default ? this.$slots.default() : []
 		);
 	}
 };

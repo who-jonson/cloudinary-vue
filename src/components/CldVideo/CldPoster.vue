@@ -36,13 +36,13 @@ export default {
 
 		if (!publicId || !this.registerPoster) return null;
 
-		const children = this.$slots.default || [];
+		const children = this.$slots.default ? this.$slots.default() : [];
 		const hasExtraTransformations = children.length > 0;
 		/* Render the children first to get the extra transformations (if there is any) */
 		if (hasExtraTransformations && !this.extraTransformations.length) {
 			return h(
 				'div', {},
-				this.$slots.default
+				children
 			);
 		}
 

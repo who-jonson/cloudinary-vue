@@ -16,7 +16,7 @@ This Readme provides basic installation and usage information. For the complete 
 
 Install using your favorite package manager (yarn, npm)
     ```bash
-    npm install cloudinary-vue
+    npm install who-jonson/cloudinary-vue#next
     yarn add cloudinary-vue
     ```
 
