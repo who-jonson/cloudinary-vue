@@ -1,12 +1,12 @@
 <script>
-import { Cloudinary } from 'cloudinary-core';
-import { setup } from '../../mixins/setup';
-import { compute } from '../../mixins/compute';
-import { register } from '../../mixins/registerTransformation';
-import { extendOptions } from '../../helpers/computeOptions';
-import { getCldPoster } from '../../helpers/findComponent';
-import { lazy } from '../../mixins/lazy';
-import { COMPONENTS } from '../../constants';
+import { Cloudinary }    from 'cloudinary-core';
+import { setup }         from '@/mixins/setup';
+import { compute }       from '@/mixins/compute';
+import { register }      from '@/mixins/registerTransformation';
+import { extendOptions } from '@/helpers/computeOptions';
+import { getCldPoster }  from '@/helpers/findComponent';
+import { lazy }          from '@/mixins/lazy';
+import { COMPONENTS }    from '@/constants';
 
 const defaultSourceTypes = Cloudinary.DEFAULT_VIDEO_SOURCE_TYPES.reduce((types, type) => ({ ...types, [type]: {} }), {});
 /**
@@ -131,7 +131,7 @@ export default {
 	created() {
 		this.setup(this.$attrs);
 	},
-	render(h) {
+	render() {
 		if (!this.publicId) return null;
 
 		const children = this.$slots.default || [];

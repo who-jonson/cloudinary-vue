@@ -12,18 +12,9 @@ using code that integrates seamlessly with your existing Vue.js application, and
 This Readme provides basic installation and usage information. For the complete documentation, see the [Vue.js SDK guide](https://cloudinary.com/documentation/vue_integration)_
 
 # 🛠️ Installation 
-## Vue 2.x
-1. Install using Vue-CLI
-    - After you create your application with Vue-CLI, navigate to the created app folder, and install Cloudinary SDK by:
-        ```bash
-        vue add cloudinary
-        ```
-    - Set up your cloudName and pick the components to use (or use all 😃)
-    ![Set up with cloudName and options](http://bit.ly/2WSKTf0)
-    - A `cloudinary.js` file will be added to your src directory, same level with your `main.js` file. Feel free to customize it if you like. And have fun with Cloudinary! 🤟
-    - More information on the plugin, check out [our Vue-CLI plugin for Cloudinary Repo](https://github.com/cloudinary/vue-cli-plugin-cloudinary)
+## Vue 3.x
 
-2. install using your favorite package manager (yarn, npm)
+Install using your favorite package manager (yarn, npm)
     ```bash
     npm install cloudinary-vue
     yarn add cloudinary-vue
@@ -41,22 +32,45 @@ npm i @nuxtjs/cloudinary
 
 ## Setup and configuration
 
-### Vue 2.x - Setup and configuration
-1. **A Global setup** - Include CloudinaryVue globally
+### Vue 3.x - Setup and configuration
+1. **A Global setup** - Include CloudinaryVue globally 
     ```javascript
-    import Vue from 'vue';
-    import Cloudinary, { CldImage, CldTransformation } from "cloudinary-vue";
+    // main.js
+    import { createApp } from 'vue';
+    import Cloudinary, { CldImage, CldTransformation } from 'cloudinary-vue';
     
-    Vue.use(Cloudinary, {
-      configuration: { cloudName: "demo" },
+    const app = createApp({ /* component options */ });
+    
+    // Install Cloudinary
+    app.use(Cloudinary, {
+      configuration: { 
+         cloudName: 'demo'
+      },
       components: {
         CldImage,
         CldTransformation
       }
     });
+   
+    app.mount('#app');
     ```
    
 2. **A Local setup** - You can also import the cloudinary components manually in each of your components.
+
+```html
+<!-- ExampleComponent.vue -->
+<script>
+   import { CldImage, CldTransformation } from 'cloudinary-vue';
+	
+   export default {
+      name: 'ExampleComponent',
+      components: {
+        CldImage,
+        CldTransformation
+      }
+   }
+</script>
+```
 
 # Plugin Configuration
 The CloudinaryVue Plugin accepts a `components` object with the Cloudinary components to install
@@ -70,7 +84,7 @@ The CloudinaryVue Plugin accepts a `components` object with the Cloudinary compo
        ```javascript
            components: {
                myImage: CldImage,
-               myTransformation : CldTransformation
+               myTransformation: CldTransformation
            }
        ```
 
@@ -83,13 +97,13 @@ In order to properly use this library you have to provide it with a few configur
   <div>
     <h1>Hello, world!</h1>
 
-    <cld-image cloudName="demo" publicId="sample" crop="scale" width="300" />
+    <CldImage cloudName="demo" publicId="sample" crop="scale" width="300" />
 
-    <cld-context cloudName="demo">
-      <cld-image publicId="sample">
-        <cld-transformation crop="scale" width="200" angle="10" />
-      </cld-image>
-    </cld-context>
+    <CldContext cloudName="demo">
+      <CldImage publicId="sample">
+        <CldTransformation crop="scale" width="200" angle="10" />
+      </CldImage>
+    </CldContext>
   </div>
 </template>
 ```
@@ -134,11 +148,11 @@ The Transformation element allows you to defined additional transformations on t
 For example:
 
 ```jsx
-<cld-image cloudName="demo" publicId="sample">
-  <cld-transformation angle="-45" />
-  <cld-transformation effect="trim" angle="45" crop="scale" width="600" />
-  <cld-transformation overlay="text:Arial_100:Hello" />
-</cld-image>
+<CldImage cloudName="demo" publicId="sample">
+  <CldTransformation angle="-45" />
+  <CldTransformation effect="trim" angle="45" crop="scale" width="600" />
+  <CldTransformation overlay="text:Arial_100:Hello" />
+</CldImage>
 ```
 
 ## How to contribute?

@@ -1,6 +1,6 @@
-
 <script>
-import { COMPONENTS } from '../../constants';
+import { h }          from 'vue';
+import { COMPONENTS } from '@/constants';
 
 /**
  * Cloudinary context providing element
@@ -23,7 +23,7 @@ export default {
 		}
 	},
 
-	render(h) {
+	render() {
 		return h(
 			'div',
 			{

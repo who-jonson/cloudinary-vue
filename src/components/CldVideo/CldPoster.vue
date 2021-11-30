@@ -1,8 +1,9 @@
 <script>
-import { setup } from '../../mixins/setup';
-import { register } from '../../mixins/registerTransformation';
-import { compute } from '../../mixins/compute';
-import { COMPONENTS } from '../../constants';
+import { h }          from 'vue';
+import { setup }      from '@/mixins/setup';
+import { register }   from '@/mixins/registerTransformation';
+import { compute }    from '@/mixins/compute';
+import { COMPONENTS } from '@/constants';
 
 /**
  * The image to be shown while a video is downloading or until the user hits the play button.
@@ -29,7 +30,7 @@ export default {
 			type: String
 		}
 	},
-	render(h) {
+	render() {
 		const baseOptions = this.getOptions();
 		const publicId = this.publicId || baseOptions.publicId;
 
