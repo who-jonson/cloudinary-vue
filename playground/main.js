@@ -12,7 +12,8 @@ const app = createApp(App);
 
 app.use(Cloudinary, {
 	configuration: { cloudName: 'demo' },
-	components: [CldImage, CldTransformation, CldVideo, CldContext]
+	components: [CldImage, CldTransformation],
+	loader: true
 });
 
 app.mount('#app');

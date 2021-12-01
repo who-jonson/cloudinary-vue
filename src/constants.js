@@ -50,7 +50,8 @@ export const COMPONENTS = {
 	CldVideo: 'CldVideo',
 	CldPoster: 'CldPoster',
 	CldTransformation: 'CldTransformation',
-	CldContext: 'CldContext'
+	CldContext: 'CldContext',
+	CldUploadWidget: 'CldUploadWidget'
 };
 
 export const RESPONSIVE_CSS_DEFAULT = Object.freeze({
@@ -93,3 +94,8 @@ export const IMAGE_WITH_PLACEHOLDER_CSS = {
 };
 
 export const CLD_IMAGE_WRAPPER_CLASS = 'cld-image-wrapper';
+
+export const WIDGET_LINKS = {
+	UPLOAD: 'https://upload-widget.cloudinary.com/global/all.js',
+	MEDIA_LIBRARY: 'https://media-library.cloudinary.com/global/all.js'
+};

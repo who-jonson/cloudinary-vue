@@ -93,16 +93,14 @@ export default {
 				...(!this.imageLoaded && hasPlaceholder ? IMAGE_WITH_PLACEHOLDER_CSS[IMAGE_CLASSES.LOADING] : {})
 			};
 
-			return (
-				<img
-					attrs={this.$attrs}
-					src={src}
-					loading={this.hasLazyLoading ? LAZY_LOADING : null}
-					class={imgClass}
-					onload={this.load}
-					style={style}
-				/>
-			);
+			return h('img', {
+				...this.$attrs,
+				loading: this.hasLazyLoading ? LAZY_LOADING : null,
+				src: src,
+				onload: this.load,
+				class: imgClass,
+				style: style
+			});
 		},
 		renderComp(children) {
 			this.setup(this.$attrs);
@@ -135,18 +133,17 @@ export default {
 			const placeholder = responsiveModeNoSize ? '' : this.cloudinary.url(this.publicId, placeholderOptions);
 			const displayPlaceholder = !this.imageLoaded && placeholder;
 
-			return (
-				<div class={CLD_IMAGE_WRAPPER_CLASS}>
-					{ this.renderImageOnly(src, true) }
-					{ displayPlaceholder && (
-						<img
-							src={placeholder}
-							attrs={this.$attrs}
-							class={PLACEHOLDER_CLASS}
-							style={IMAGE_WITH_PLACEHOLDER_CSS[PLACEHOLDER_CLASS]}
-						/>) }
-				</div>
-			);
+			return h('div', {
+				class: CLD_IMAGE_WRAPPER_CLASS
+			}, [
+				this.renderImageOnly(src, true),
+				displayPlaceholder && h('img', {
+					...this.$attrs,
+					src: placeholder,
+					class: PLACEHOLDER_CLASS,
+					style: IMAGE_WITH_PLACEHOLDER_CSS[PLACEHOLDER_CLASS]
+				})
+			]);
 		}
 	},
 	render() {
@@ -159,7 +156,7 @@ export default {
 		if (hasExtraTransformations && !this.extraTransformations.length) {
 			return h(
 				'img', {
-					attrs: this.attrs
+					...this.attrs
 				},
 				children
 			);

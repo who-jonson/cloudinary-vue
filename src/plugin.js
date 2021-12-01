@@ -1,9 +1,16 @@
+import { loadScript, unloadScript } from '@/utils/script-loader';
+
 export function install(app, options = {}) {
 	if (app.CldInstalled) {
 		throw new Error('Cloudinary plugin already installed');
 	}
 
 	app.CldInstalled = true;
+
+	if (options.loader) {
+		app.config.globalProperties.$loadScript = loadScript;
+		app.config.globalProperties.$unloadScript = unloadScript;
+	}
 
 	initComponents(app, options);
 }

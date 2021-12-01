@@ -1,4 +1,4 @@
-import { debounce } from '../utils';
+import { debounce } from '@/utils';
 
 /**
  * Call back a provided function

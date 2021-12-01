@@ -1,9 +1,9 @@
-import { watchElementVisibility } from '../helpers/visibility';
+import { watchElementVisibility } from '@/helpers/visibility';
 import {
 	LAZY_LOADING,
 	CLD_IMAGE_WRAPPER_CLASS,
 	IMAGE_CLASSES
-} from '../constants';
+} from '@/constants';
 
 /**
  * If necessary watches for root elements visibility
